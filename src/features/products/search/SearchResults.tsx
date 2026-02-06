@@ -7,6 +7,7 @@ import type { ProductListResponse } from "../../../app/services/products/product
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
+  console.log("It's working this the searchResult Component")
 
   const query = searchParams.get("q")?.trim() ?? "";
 
@@ -18,6 +19,7 @@ const SearchResults = () => {
     queryFn: () => searchProducts(query, { limit, skip }),
     enabled: query.length > 0, // CRITICAL
   });
+  console.log(data)
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -27,7 +29,7 @@ const SearchResults = () => {
   if (!data || data.products.length === 0)
     return <div>No results found</div>;
 
-  return <ProductList data={data.products} />;
+  return <ProductList data={data} />;
 };
 
 export default SearchResults;

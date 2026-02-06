@@ -3,10 +3,19 @@ import { useQuery } from "@tanstack/react-query";
 import ProductList from "./ProductList";
 import type { ProductListResponse } from "../../app/services/products/product.types";
 import { fetchProductsByCategory } from "../../app/services/products/product.api";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+
 
 const ProductCategory = () => {
   const { category } = useParams<{ category:any}>();
 
+  //Change the title for this page 
+  useDocumentTitle(
+    `cartify - ${category} Details`)
+    console.log(category)
+
+
+  
   const {
     data,
     isLoading,

@@ -1,11 +1,11 @@
 import Button from "../common/Button";
-import WebLogoImg from "../assets/react.svg";
 import "./Header.css";
 import useTheme from "../hooks/useTheme";
 import SearchBar from "../features/products/search/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../app/store/hooks";
+import { useAppSelector } from "../hooks/reduxHooks";
+import CartifyLogo from "../assets/CartifyLogo";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -19,17 +19,21 @@ const Header = () => {
   const cartCount = useAppSelector((state) =>
     state.cart.items.reduce((sum, item) => sum + item.quantity, 0),
   );
-
   return (
     <>
       <header className="sticky top-0 transition-all shadow-md z-10 ">
-        <section className="header-section bg-blue-700 flex pr-16 pl-24 justify-between py-4 dark:bg-[#14102d]">
-          <div className="websiteLogo">
-            <img src={WebLogoImg} alt="The path is wrong." />
+        <section className="header-section bg-blue-900 flex flex-wrap items-center justify-between py-4 dark:bg-[#14102d] px-4 sm:px-8 ss:justify-around xs:justify-around">
+{/* Cartify Logo  */}
+          <div className="websiteLogo w-auto xs:max-w-36 sm:w-32">
+           <CartifyLogo />
           </div>
+
+      {/* SearchBar  */}
           <SearchBar />
-          <div className=" flex justify-center items-center gap-9">
-            <div className="flex gap-5 cursor-pointer items-center dark:text-white">
+
+          {/* Header Buttons  */}
+          <div className=" flex justify-center items-center gap-9 xs:max-sm:gap-2 ss:order-1 sm:order-0 ">
+            <div className="flex gap-5 xs:max-sm:gap-2 cursor-pointer items-center dark:text-white">
               <div className="flex justify-center">
                 <Button
                   label="Sign Up"

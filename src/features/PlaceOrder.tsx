@@ -29,6 +29,9 @@ const PlaceOrder = () => {
             key={item.id}
             className="flex justify-between border-b py-2"
           >
+            <div>
+              <img src={item.thumbnail} alt="This the product image in place order" width="50" height="50" />
+            </div>
             <span>
               {item.title} × {item.quantity}
             </span>

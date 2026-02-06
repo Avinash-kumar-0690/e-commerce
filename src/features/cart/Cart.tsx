@@ -4,7 +4,7 @@ import {
   updateQuantity,
   toggleSelect,
 } from "./cartSlice";
-import { useAppDispatch, useAppSelector } from "../../app/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -18,7 +18,7 @@ const Cart = () => {
 
   if (!items.length) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center dark:bg-black dark:text-white">
         Your cart is empty
       </div>
     );
@@ -26,38 +26,39 @@ const Cart = () => {
 
   const handlePlaceOrder = () => {
     const selectedItems = items.filter((item) => item.selected);
-
-    if (selectedItems.length === 0) {
+    if (!selectedItems.length) {
       alert("Select at least one item");
       return;
     }
-
-    navigate("/place-order", {
-      state: { items: selectedItems },
-    });
+    navigate("/place-order", { state: { items: selectedItems } });
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
-      <div className="w-11/12 mx-auto flex gap-6">
+    <div className="min-h-screen py-10 bg-gray-100 dark:bg-black dark:text-white">
+      <div className="w-11/12 mx-auto flex flex-col md:flex-row gap-6">
         {/* LEFT */}
-        <div className="w-3/4 space-y-4">
+        <div className="w-full md:w-3/4 space-y-4">
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex gap-4 bg-white border p-4 rounded"
+              className="flex gap-4 p-4 flex-col sm:flex-row rounded border 
+                         bg-white border-gray-200
+                         dark:bg-gray-900 dark:border-gray-700"
             >
-              <input
-                type="checkbox"
-                checked={item.selected}
-                onChange={() => dispatch(toggleSelect(item.id))}
-              />
+              <div className="flex items-center gap-4">
+                <input
+                  type="checkbox"
+                  checked={item.selected}
+                  onChange={() => dispatch(toggleSelect(item.id))}
+                  className="accent-orange-600"
+                />
 
-              <img
-                src={item.images[0]}
-                className="w-24 h-24 object-contain"
-                alt={item.title}
-              />
+                <img
+                  src={item.images[0]}
+                  alt={item.title}
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
 
               <div className="flex-1">
                 <h3 className="font-semibold">{item.title}</h3>
@@ -71,10 +72,13 @@ const Cart = () => {
                         updateQuantity({
                           id: item.id,
                           quantity: item.quantity - 1,
-                        })
+                        }),
                       )
                     }
-                    className="px-2 border disabled:opacity-50"
+                    className="px-2 border rounded
+                               border-gray-300
+                               dark:border-gray-600
+                               disabled:opacity-50"
                   >
                     −
                   </button>
@@ -87,10 +91,12 @@ const Cart = () => {
                         updateQuantity({
                           id: item.id,
                           quantity: item.quantity + 1,
-                        })
+                        }),
                       )
                     }
-                    className="px-2 border"
+                    className="px-2 border rounded
+                               border-gray-300
+                               dark:border-gray-600"
                   >
                     +
                   </button>
@@ -103,7 +109,7 @@ const Cart = () => {
 
               <button
                 onClick={() => dispatch(removeFromCart(item.id))}
-                className="text-red-600"
+                className="text-red-600 hover:underline self-start sm:self-auto"
               >
                 Remove
               </button>
@@ -112,7 +118,11 @@ const Cart = () => {
         </div>
 
         {/* RIGHT */}
-        <div className="w-1/4 bg-white border p-6 rounded h-fit">
+        <div
+          className="w-full md:w-1/4 p-5 md:p-6 rounded h-fit border
+                     bg-white border-gray-200
+                     dark:bg-gray-900 dark:border-gray-700"
+        >
           <h2 className="font-semibold mb-4">Price Details</h2>
 
           <p className="flex justify-between mb-2">
@@ -121,15 +131,16 @@ const Cart = () => {
           </p>
 
           <button
-            className="w-full mt-4 bg-orange-600 text-white py-3 rounded"
             onClick={handlePlaceOrder}
+            className="w-full mt-4 bg-orange-600 hover:bg-orange-700
+             text-white py-3 rounded text-sm sm:text-base"
           >
             Place Order
           </button>
 
           <button
             onClick={() => dispatch(clearCart())}
-            className="w-full mt-2 text-red-600"
+            className="w-full mt-2 text-red-500 hover:underline"
           >
             Clear Cart
           </button>

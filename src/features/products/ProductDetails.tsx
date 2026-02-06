@@ -5,7 +5,9 @@ import {
   fetchProductDetails,
   type Producttype,
 } from "../../app/services/ProductClient";
-import { useAppDispatch } from "../../app/store/hooks";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { defaultTitle } from "../../pages/Home";
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,7 +19,11 @@ const ProductDetails = () => {
     queryFn: () => fetchProductDetails(id!),
     enabled: !!id,
   });
+  
 
+  // Change dynamic document title according to the product
+  useDocumentTitle(`cartify - ${productQuery?.data?.title? productQuery.data.title:defaultTitle}`)
+  
   if (productQuery.isLoading) {
     return (
       <div className="py-20 text-center text-gray-700 dark:text-gray-300">
@@ -33,7 +39,7 @@ const ProductDetails = () => {
       </div>
     );
   }
-
+  
   const product = productQuery.data;
   // handle adding cart items
   const handleCart = () => {
@@ -42,7 +48,7 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = () => {
-  navigate("/place-order", {
+    navigate("/place-order", {
       state: {
         items: [
           {
@@ -54,29 +60,31 @@ const ProductDetails = () => {
         ],
       },
     });
-};
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black">
-      <div className="w-11/12 mx-auto py-8 flex gap-10">
+      <div className="w-11/12 mx-auto py-6 flex flex-col md:flex-row gap-6 md:gap-10">
         {/* IMAGE SECTION */}
-        <div className="w-2/5 sticky top-20 self-start">
+        <div className="w-full md:w-2/5 md:sticky md:top-20 self-start">
           <div className="bg-white dark:bg-gray-900 border dark:border-gray-700 rounded-lg p-6">
             <img
               src={product.images[0]}
               alt={product.title}
-              className="w-full h-105 object-contain"
+              className="w-full h-64 md:h-96 object-contain"
             />
 
-            <div className="flex gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <button
                 className="flex-1 bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-md font-semibold"
                 onClick={handleCart}
               >
                 Add to Cart
               </button>
-              <button className="flex-1 bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-md font-semibold"
-              onClick={handleBuyNow}>
+              <button
+                className="flex-1 bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-md font-semibold"
+                onClick={handleBuyNow}
+              >
                 Buy Now
               </button>
             </div>
@@ -84,9 +92,9 @@ const ProductDetails = () => {
         </div>
 
         {/* DETAILS SECTION */}
-        <div className="w-3/5 bg-white dark:bg-gray-900 border dark:border-gray-700 rounded-lg p-8 space-y-6">
+        <div className="w-full md:w-3/5 bg-white dark:bg-gray-900 border dark:border-gray-700 rounded-lg p-5 md:p-8 space-y-6">
           {/* TITLE */}
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+          <h1 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
             {product.title}
           </h1>
 
@@ -102,7 +110,7 @@ const ProductDetails = () => {
 
           {/* PRICE */}
           <div className="flex items-end gap-3">
-            <span className="text-3xl font-bold text-gray-900 dark:text-white">
+            <span className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
               ${product.price}
             </span>
             <span className="text-gray-400 dark:text-gray-500 line-through">
@@ -123,7 +131,7 @@ const ProductDetails = () => {
           </p>
 
           {/* HIGHLIGHTS */}
-          <div className="grid grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <p>
               <strong>Brand:</strong> {product.brand}
             </p>

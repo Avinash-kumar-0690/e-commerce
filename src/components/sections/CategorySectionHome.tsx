@@ -1,10 +1,12 @@
 import { useInView } from "react-intersection-observer";
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../features/products/ProductCard";
 import { fetchProductsByCategory } from "../../app/services/products/product.api";
 import type { ProductListResponse } from "../../app/services/products/product.types";
+import { useNavigate } from "react-router";
 
 const CategorySectionHome = ({ category }: { category: string }) => {
+  const navigate = useNavigate()
   const { ref, inView } = useInView({
     triggerOnce: true, // Important to load only once
     rootMargin: "200px", //preload before in view
@@ -12,7 +14,7 @@ const CategorySectionHome = ({ category }: { category: string }) => {
 
   const categoriesQuery = useQuery<ProductListResponse>({
     queryKey: ["product-category", category],
-    queryFn: () =>fetchProductsByCategory( category, {limit: 5, skip:0, }),
+    queryFn: () =>fetchProductsByCategory( category, {limit: 4, skip:0, }),
     enabled: inView, // only fetch when in view
     staleTime: 1000 * 60 * 10,
   });
@@ -21,7 +23,7 @@ const CategorySectionHome = ({ category }: { category: string }) => {
 
   // Navigate to category page on click
   const navigateCategory = () => {
-    window.location.href = `/products/category/${category}`;
+   navigate(`/products/category/${category}`);
   };
   return (
     <section ref={ref} key={category} className="px-8" onClick={navigateCategory}>

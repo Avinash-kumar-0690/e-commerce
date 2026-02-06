@@ -32,7 +32,7 @@ const ProductCard = ({
         bg-white dark:bg-[#1f1f1f]
         hover:shadow-lg dark:hover:shadow-mode-dark
         transition-all duration-300
-        flex flex-col
+        flex flex-col 
       "
     >
       {/* IMAGE */}

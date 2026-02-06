@@ -41,12 +41,12 @@ export const router = createBrowserRouter([
                 path: "products",
                 children: [
                     {
-                        path: "product/:id",
-                        element:<ProductDetails />
-                    },
-                    {
                         path: "category/:category",
                         element:<ProductCategory />
+                    },
+                    {
+                        path: "product/:id",
+                        element:<ProductDetails />
                     },
 
                     {
