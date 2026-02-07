@@ -32,15 +32,15 @@ const CartifyLogo = ({ size = 200 }: CartifyLogoProps) => {
         {/* Handle */}
         <path
           d="M4 12 H12 V18"
-          stroke="#F9FAFB"
+          stroke="currentColor"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
 
         {/* Wheels */}
-        <circle cx="20" cy="42" r="3" fill="#F9FAFB" />
-        <circle cx="38" cy="42" r="3" fill="#F9FAFB" />
+        <circle cx="20" cy="42" r="3" fill="currentcolor" />
+        <circle cx="38" cy="42" r="3" fill="currentcolor" />
       </g>
 
       {/* Text */}
@@ -50,7 +50,7 @@ const CartifyLogo = ({ size = 200 }: CartifyLogoProps) => {
         fontFamily="Inter, system-ui, sans-serif"
         fontSize="28"
         fontWeight="600"
-        fill="#F9FAFB"
+        fill="currentcolor"
       >
         Cartify
       </text>

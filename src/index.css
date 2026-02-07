@@ -8,6 +8,7 @@
     0 1px 1px #464242, 0 2px 2px #464242, 0 4px 4px #464242, 0 4px 4px #464242;
   --breakpoint-xs: 22.5rem;  /*360px */
   --breakpoint-ss: 30rem;     /*480px */
+  --breakpoint-base: 0;     /*0px */
 }
 
 html,

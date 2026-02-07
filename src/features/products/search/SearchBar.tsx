@@ -96,11 +96,12 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative w-1/3 mt-3 ss:max-sm:w-3/4 xs:max-ss:w-3/4 mb-2">
-      <div className="bg-white rounded-md flex">
+    <div className="relative w-1/3 mt-3 xs:max-sm:w-3/4 xs:max-ss:w-3/4 mb-2 base:max-sm:order-2  ">
+      <div className="bg-white rounded-md border-2 flex xs:max-sm:border-blue-900 ">
         <input
           type="text"
-          className="w-full p-2 outline-none text-black"
+          name="searchInput"
+          className="w-full p-2 outline-none text-black "
           placeholder="Search products..."
           value={searchValue}
           onChange={(e) => {

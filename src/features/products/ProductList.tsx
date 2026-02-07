@@ -11,7 +11,7 @@ export interface ApiData {
 const ProductList = ({data}:any)=> {
  return (
     <div className="w-11/12 mx-auto  py-6">
-      <div className="grid grid-cols-none sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xs:max-ss:block sm:gap-6">
+      <div className="grid grid-cols-none sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 base:max-ss:block sm:gap-6">
         {data?.products?.map((product: any) => (
           <ProductCard
             key={product.id}

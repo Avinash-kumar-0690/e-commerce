@@ -22,18 +22,21 @@ const Header = () => {
   return (
     <>
       <header className="sticky top-0 transition-all shadow-md z-10 ">
-        <section className="header-section bg-blue-900 flex flex-wrap items-center justify-between py-4 dark:bg-[#14102d] px-4 sm:px-8 ss:justify-around xs:justify-around">
+        <section className="header-section bg-blue-900 flex flex-wrap items-center justify-between py-4 dark:bg-[#14102d] px-4 sm:px-8 ss:justify-around base:justify-around xs:max-sm:bg-white   ">
 {/* Cartify Logo  */}
-          <div className="websiteLogo w-auto xs:max-w-36 sm:w-32">
-           <CartifyLogo />
-          </div>
+<div className="xs:max-sm:text-black sm:text-white xs:max-sm:w-36">
+
+          <Link to="/" className="websiteLogo w-auto base:max-w-36 sm:w-32text-slate-900   ">
+           <CartifyLogo  />
+          </Link>
+</div>
 
       {/* SearchBar  */}
           <SearchBar />
 
           {/* Header Buttons  */}
-          <div className=" flex justify-center items-center gap-9 xs:max-sm:gap-2 ss:order-1 sm:order-0 ">
-            <div className="flex gap-5 xs:max-sm:gap-2 cursor-pointer items-center dark:text-white">
+          <div className=" flex justify-center items-center gap-9 base:max-sm:gap-2 xs:max-sm:order-1 ">
+            <div className="flex gap-5 base:max-sm:gap-2 cursor-pointer items-center dark:text-white">
               <div className="flex justify-center">
                 <Button
                   label="Sign Up"
