@@ -12,14 +12,24 @@ const Cart = () => {
   const navigate = useNavigate();
   const items = useAppSelector((state) => state.cart.items);
 
+  const handleBacktoHome = (): void => {
+    navigate("/");
+  };
+
   const totalPrice = items
     .filter((item) => item.selected)
     .reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   if (!items.length) {
     return (
-      <div className="min-h-screen flex items-center justify-center dark:bg-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 dark:bg-black dark:text-white">
         Your cart is empty
+        <button
+          onClick={handleBacktoHome}
+          className="px-2 border rounded bg-green-700 border-gray-300 text-2xl dark:border-gray-600 disabled:opacity-50"
+        >
+          Go to Home page
+        </button>
       </div>
     );
   }
@@ -30,7 +40,7 @@ const Cart = () => {
       alert("Select at least one item");
       return;
     }
-    navigate("/Order-summary", { state: { items: selectedItems } });
+    navigate("/order-summary", { state: { items: selectedItems } });
   };
 
   return (

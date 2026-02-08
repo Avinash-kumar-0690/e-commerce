@@ -1,5 +1,7 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { removeSelectedItems } from "../cart/cartSlice";
 
 type State = {
   fullName: string;
@@ -48,6 +50,7 @@ function reducer(state: State, action: Action): State {
 const CheckoutForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
+  const Dispatch = useAppDispatch();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -71,7 +74,9 @@ const CheckoutForm = () => {
       return;
     }
 
+    Dispatch(removeSelectedItems());
     navigate("/order-success");
+
     console.log("Checkout data:", state);
     // placeOrder(state) or navigate("/payment")
   };
