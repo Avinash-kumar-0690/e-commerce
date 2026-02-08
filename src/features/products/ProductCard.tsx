@@ -32,8 +32,7 @@ const ProductCard = ({
         bg-white dark:bg-[#1f1f1f]
         hover:shadow-lg dark:hover:shadow-mode-dark
         transition-all duration-300
-        flex flex-col 
-      "
+        flex flex-col xs:max-sm:mt-5"
     >
       {/* IMAGE */}
       <div className="p-4 flex justify-center items-center bg-gray-50 dark:bg-[#2a2a2a] rounded-t-lg">
