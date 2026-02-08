@@ -44,11 +44,10 @@ const ProductDetails = () => {
   // handle adding cart items
   const handleCart = () => {
     dispatch(addToCart(product));
-    navigate("/cart");
   };
 
   const handleBuyNow = () => {
-    navigate("/place-order", {
+    navigate("/order-summary", {
       state: {
         items: [
           {
@@ -56,6 +55,7 @@ const ProductDetails = () => {
             title: product.title,
             price: product.price,
             quantity: 1,
+            thumbnail:product.thumbnail
           },
         ],
       },

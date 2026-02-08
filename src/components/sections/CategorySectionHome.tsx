@@ -26,12 +26,12 @@ const CategorySectionHome = ({ category }: { category: string }) => {
    navigate(`/products/category/${category}`);
   };
   return (
-    <section ref={ref} key={category} className="px-8" onClick={navigateCategory}>
+    <section ref={ref} key={category} className="px-8 xs:max-sm:p-2" onClick={navigateCategory}>
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 capitalize">
         {category}
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 xs:max-sm:gap-2">
         {categoriesQuery?.data?.products?.map((product: any) => (
           <ProductCard
             key={product.id}

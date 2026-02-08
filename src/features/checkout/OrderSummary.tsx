@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-const PlaceOrder = () => {
+const OrderSummaary = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -20,14 +20,14 @@ const PlaceOrder = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="w-8/12 mx-auto bg-white p-6 rounded">
+    <div className="min-h-screen bg-gray-100 py-10 dark:bg-black">
+      <div className="w-8/12 mx-auto bg-white p-6 dark:bg-black  rounded">
         <h1 className="text-xl font-bold mb-4">Order Summary</h1>
 
         {items.map((item: any) => (
           <div
             key={item.id}
-            className="flex justify-between border-b py-2"
+            className="flex justify-between border-b py-2  dark:bg-gray-900 dark:border-gray-700"
           >
             <div>
               <img src={item.thumbnail} alt="This the product image in place order" width="50" height="50" />
@@ -49,15 +49,14 @@ const PlaceOrder = () => {
         <button
           className="w-full mt-6 bg-green-600 text-white py-3 rounded"
           onClick={() => {
-            alert("Order placed successfully");
-            navigate("/");
+            navigate("/checkout");
           }}
         >
-          Confirm Order
+          Place Order
         </button>
       </div>
     </div>
   );
 };
 
-export default PlaceOrder;
+export default OrderSummaary;

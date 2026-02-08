@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
 const OrderSuccess = () => {
+  const navigate = useNavigate()
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/")
+      console.log("It's working..")
+    },2000)
+  },[])
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black">
       <div className="bg-white dark:bg-gray-900 border dark:border-gray-700 p-10 rounded text-center">

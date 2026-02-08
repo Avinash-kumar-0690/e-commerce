@@ -30,7 +30,7 @@ const Cart = () => {
       alert("Select at least one item");
       return;
     }
-    navigate("/place-order", { state: { items: selectedItems } });
+    navigate("/Order-summary", { state: { items: selectedItems } });
   };
 
   return (
@@ -135,7 +135,7 @@ const Cart = () => {
             className="w-full mt-4 bg-orange-600 hover:bg-orange-700
              text-white py-3 rounded text-sm sm:text-base"
           >
-            Place Order
+            Order Summary
           </button>
 
           <button
