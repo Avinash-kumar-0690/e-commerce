@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './app/store/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ErrorBoundary } from './components/ErrorBoundary'
+import { Analytics } from '@vercel/analytics/react'
 
 export const queryClient = new QueryClient()
 
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
 
     <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
+    <Analytics />
     </QueryClientProvider>
 </PersistGate>
     </Provider>
