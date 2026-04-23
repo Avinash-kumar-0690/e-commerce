@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   id: string;
@@ -25,8 +25,8 @@ const ProductCard = ({
     navigate(`/products/product/${id}`)
   }
   return (
-    <div
-      onClick={() => navigateProductDetails(id)}
+    <Link to={`/products/product/${id}`}
+      
       className="
         cursor-pointer rounded-lg border
         bg-white dark:bg-[#1f1f1f]
@@ -62,7 +62,7 @@ const ProductCard = ({
     
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

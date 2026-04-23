@@ -15,6 +15,7 @@ const Cart = () => {
   const handleBacktoHome = (): void => {
     navigate("/");
   };
+  console.log(items)
 
   const totalPrice = items
     .filter((item) => item.selected)

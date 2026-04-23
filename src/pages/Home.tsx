@@ -1,7 +1,7 @@
 
 import { useProductCategories } from "../app/services/products/useProductCategories";
 
-import CategorySectionHome from "../components/sections/CategorySectionHome";
+import CategorySectionHome from "../components/sections/CategorySection";
 
 export  const defaultTitle = "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery"
 const Home = () => {

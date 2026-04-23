@@ -5,6 +5,8 @@ import {
   searchProducts,
 } from "./product.api";
 
+
+
 export const useProducts = (params?: { limit?: number; skip?: number }) =>
   useQuery({
     queryKey: ["products", params],

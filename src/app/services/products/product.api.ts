@@ -1,4 +1,5 @@
-import { api } from "../apiClient";import type { PaginationParams, ProductListResponse } from "./product.types";
+import { api } from "../apiClient";
+import type { PaginationParams, ProductListResponse } from "./product.types";
 ;
 
 const buildQuery = ({ limit, skip }: PaginationParams) => {

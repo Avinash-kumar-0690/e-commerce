@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense, type JSX } from "react";
 import MainLayout from "../layout/MainLayout";
+import ProductCardSkeleton from "../ui/skeleton/ProductCardSkeleton";
 
 // Lazy pages
 const Home = lazy(() => import("../pages/Home"));
@@ -26,7 +27,7 @@ const OrderSummary = lazy(
 );
 
 const withSuspense = (element:JSX.Element) => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<ProductCardSkeleton />}>
     {element}
   </Suspense>
 );
