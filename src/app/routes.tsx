@@ -5,7 +5,6 @@ import ProductCardSkeleton from "../ui/skeleton/ProductCardSkeleton";
 
 // Lazy pages
 const Home = lazy(() => import("../pages/Home"));
-const Contact = lazy(() => import("../pages/Contact"));
 const Checkout = lazy(() => import("../pages/Checkout"));
 
 // Lazy features
@@ -39,10 +38,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: withSuspense(<Home />),
-      },
-      {
-        path: "contact",
-        element: withSuspense(<Contact />),
       },
       {
         path: "cart",
