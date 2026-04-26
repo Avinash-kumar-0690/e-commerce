@@ -14,7 +14,6 @@ const ProductCategory = () => {
     `cartify - ${category} Details`)
     console.log(category)
 
-
   
   const {
     data,

@@ -12,11 +12,13 @@ const Cart = () => {
   const navigate = useNavigate();
   const items = useAppSelector((state) => state.cart.items);
 
+
   const handleBacktoHome = (): void => {
     navigate("/");
   };
   console.log(items)
 
+  // total Price in cart of all Selected Items 
   const totalPrice = items
     .filter((item) => item.selected)
     .reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -33,8 +35,9 @@ const Cart = () => {
         </button>
       </div>
     );
-  }
+  };
 
+  // go to Order Place Page 
   const handlePlaceOrder = () => {
     const selectedItems = items.filter((item) => item.selected);
     if (!selectedItems.length) {

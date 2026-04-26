@@ -65,7 +65,7 @@ const CheckoutForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Brutal validation (minimum required)
+    //validation (minimum required)
     if (!state.fullName || !state.phone || !state.address) {
       dispatch({
         type: "SET_ERROR",

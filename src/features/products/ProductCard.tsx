@@ -6,6 +6,7 @@ interface ProductCardProps {
   category: string;
   thumbnail: string;
   price: number;
+  navigateTo?:boolean
 }
 
 
@@ -16,17 +17,33 @@ const ProductCard = ({
   category,
   thumbnail,
   price,
+  navigateTo=false,
 }: ProductCardProps) => {
   const navigate = useNavigate();
 
-  const navigateProductDetails = (id:string) => {
-    // Navigate to Product Details Page
+  // Navigate to Product Details
+  const navigateProductDetails = () => {
     if(!id) return;
     navigate(`/products/product/${id}`)
   }
+
+  // Navigate to category page on click
+  const navigateProductCategory = () => {
+   navigate(`/products/category/${category}`);
+  };
+
+
+  const handleProductNavigation = () => {
+    if(navigateTo) {
+      navigateProductCategory()
+    }
+    else {
+      navigateProductDetails()
+    }
+  }
   return (
-    <Link to={`/products/product/${id}`}
-      
+    <div
+      onClick={handleProductNavigation}
       className="
         cursor-pointer rounded-lg border
         bg-white dark:bg-[#1f1f1f]
@@ -62,7 +79,7 @@ const ProductCard = ({
     
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

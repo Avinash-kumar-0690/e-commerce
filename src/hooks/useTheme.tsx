@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// use This component for set the theme dark or light 
 const useTheme = () => {
   const [theme, settheme] = useState<"light" | "dark">(
     () => (localStorage.getItem("theme") as "light" | "dark") || "light",

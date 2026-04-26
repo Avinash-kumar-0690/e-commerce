@@ -1,4 +1,3 @@
-// app/store/store.ts
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import cartReducer from "../../features/cart/cartSlice";
 import {
@@ -26,7 +25,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // redux-persist needs this
+      serializableCheck: false, 
     }),
 });
 

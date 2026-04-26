@@ -10,12 +10,13 @@ import CartifyLogo from "../assets/CartifyLogo";
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const handleSignup = () => {};
+  const handleSignup = () => { };
 
   // Handle Cart Nagivate Logic
   const handleCart = () => {
     navigate("/cart");
   };
+
   const cartCount = useAppSelector((state) =>
     state.cart.items.reduce((sum, item) => sum + item.quantity, 0),
   );
@@ -23,21 +24,23 @@ const Header = () => {
     <>
       <header className="sticky top-0 transition-all shadow-md z-10 ">
         <section className="header-section bg-blue-900 flex flex-wrap items-center justify-between py-4 dark:bg-[#14102d] px-4 sm:px-8 ss:justify-around base:justify-around xs:max-sm:bg-white   ">
-{/* Cartify Logo  */}
-<div className="xs:max-sm:text-black sm:text-white xs:max-sm:w-36">
+          {/* Cartify Logo  */}
+          <div className="xs:max-sm:text-black sm:text-white xs:max-sm:w-36">
 
-          <Link to="/" className="websiteLogo w-auto base:max-w-36 sm:w-32text-slate-900   ">
-           <CartifyLogo  />
-          </Link>
-</div>
+            <Link to="/" className="websiteLogo w-auto base:max-w-36 sm:w-32text-slate-900   ">
+              <CartifyLogo />
+            </Link>
+          </div>
 
-      {/* SearchBar  */}
+          {/* SearchBar  */}
           <SearchBar />
 
           {/* Header Buttons  */}
           <div className=" flex justify-center items-center gap-9 base:max-sm:gap-2 xs:max-sm:order-1 ">
             <div className="flex gap-5 base:max-sm:gap-2 cursor-pointer items-center dark:text-white">
               <div className="flex justify-center">
+
+                {/* SignUp/Login Button  */}
                 <Button
                   label="Sign Up"
                   onClick={handleSignup}
@@ -46,7 +49,10 @@ const Header = () => {
                    dark:hover:bg-indigo-400 transition-colors"
                 />
               </div>
+
+              {/* Cart Icon  */}
               <div className="cart">
+
                 <Link to="/cart" className="relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -1,13 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { addToCart } from "../cart/cartSlice";
-import {
-  fetchProductDetails,
-  type Producttype,
-} from "../../app/services/ProductClient";
+
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { defaultTitle } from "../../pages/Home";
+import type { Producttype } from "../../app/services/products/product.types";
+import { fetchProductDetails } from "../../app/services/products/product.api";
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();

@@ -1,7 +1,7 @@
 import { api } from "../apiClient";
-import type { PaginationParams, ProductListResponse } from "./product.types";
-;
+import type { PaginationParams, ProductListResponse, Producttype } from "./product.types";
 
+// create query for pagination 
 const buildQuery = ({ limit, skip }: PaginationParams) => {
   const query = new URLSearchParams();
 
@@ -11,7 +11,7 @@ const buildQuery = ({ limit, skip }: PaginationParams) => {
   return query.toString();
 };
 
-/** Get all products */
+//  Get all products 
 export const fetchProducts = async (
   params: PaginationParams = {}
 ): Promise<ProductListResponse> => {
@@ -53,3 +53,11 @@ export const searchProducts = async (
   const res = await api.get<ProductListResponse>(url);
   return res.data;
 };
+
+
+// Fetch Product By Id 
+export const fetchProductDetails = async (id: string): Promise<Producttype> => {
+    const response = await api.get(`/products/${id}`)
+    return response.data;
+}
+
