@@ -1,6 +1,7 @@
 import { Outlet } from "react-router"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import { Analytics } from "@vercel/analytics/react"
 
 const MainLayout = () => {
   
@@ -11,6 +12,7 @@ const MainLayout = () => {
     <Outlet />
     </main>
     <Footer />
+    <Analytics />
     </>
   )
 }
