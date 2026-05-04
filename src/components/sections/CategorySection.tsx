@@ -1,7 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../../features/products/ProductCard";
-
 import type { ProductListResponse } from "../../app/services/products/product.types";
 import ProductCardSkeleton from "../../ui/skeleton/ProductCardSkeleton";
 import { fetchProductsByCategory } from "../../app/services/products/product.api";
@@ -11,7 +10,7 @@ const CategorySectionHome = ({ category }: { category: string }) => {
     triggerOnce: true, // Important to load only once
     rootMargin: "200px", //preload before in view
   });
-  console.log(category)
+
 
 
   // Fetch Product by Category 
@@ -23,9 +22,6 @@ const CategorySectionHome = ({ category }: { category: string }) => {
   });
 
 
-
-
-categoriesQuery?.isPending? console.log(categoriesQuery):null
   return (
     <section ref={ref} key={category} className={`${category}-section px-8 xs:max-sm:p-2`}>
       <h2 className="text-xl font-semibold h-8 mb-4 text-gray-800 dark:text-gray-100 capitalize">

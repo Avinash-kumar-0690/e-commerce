@@ -7,6 +7,7 @@ import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { defaultTitle } from "../../pages/Home";
 import type { Producttype } from "../../app/services/products/product.types";
 import { fetchProductDetails } from "../../app/services/products/product.api";
+import ProductDetailsSkeleton from "../../ui/skeleton/ProductDetailsSkeleton";
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,9 +26,7 @@ const ProductDetails = () => {
   
   if (productQuery.isLoading) {
     return (
-      <div className="py-20 text-center text-gray-700 dark:text-gray-300">
-        Loading product...
-      </div>
+      <ProductDetailsSkeleton />
     );
   }
 
